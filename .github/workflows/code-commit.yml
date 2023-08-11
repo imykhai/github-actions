@@ -1,15 +1,14 @@
-# Sample workflow to access AWS resources when workflow is tied to branch
-name: AWS example workflow
+name: Sync repository with CodeCommit
 on:
   push
 env:
   AWS_REGION : "eu-west-1"
-# permission can be added at job level or workflow level    
+  REPOSITORY_NAME: ${{ github.repository }}
 permissions:
-      id-token: write   # This is required for requesting the JWT
-      contents: read    # This is required for actions/checkout
+      id-token: write
+      contents: read
 jobs:
-  CodeCommitListRepos:
+  SyncWithCodeCommit:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone the repository
@@ -20,7 +19,6 @@ jobs:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubCodeCommitAction
           role-session-name: samplerolesession
           aws-region: ${{ env.AWS_REGION }}
-      # List all code commit repositories
-      - name:  List all code commit repositories
-        run: |
-          aws codecommit list-repositories
+      - name:  Sync repository with CodeCommit
+        run: ./.github/scripts/sync-repo.sh
+        shell: bash
