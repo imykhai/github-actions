@@ -1,0 +1,19 @@
+{
+  "name": "github-actions",
+  "version": "1.0.0",
+  "description": "Pushing to main branch should trigger CodeBuild execution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imykhai/github-actions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imykhai/github-actions/issues"
+  },
+  "homepage": "https://github.com/imykhai/github-actions#readme"
+}
