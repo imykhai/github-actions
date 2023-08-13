@@ -2,7 +2,6 @@ name: Sync repository with CodeCommit
 on:
   push
 env:
-  AWS_REGION : "eu-west-1"
   REPOSITORY_NAME: ${{ github.event.repository.name }}
 permissions:
       id-token: write
@@ -20,7 +19,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubCodeCommitAction
           role-session-name: samplerolesession
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ vars.AWS_REGION }}
       - name:  Sync repository with CodeCommit
         run: ./.github/scripts/sync-repo.sh
         shell: bash
