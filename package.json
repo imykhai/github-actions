@@ -1,5 +1,5 @@
 {
-  "name": "github-actions",
+  "name": "@imykhai/github-actions",
   "version": "1.0.2",
   "description": "Pushing to main branch should trigger CodeBuild execution",
   "main": "index.js",
